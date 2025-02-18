@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ultimate : MonoBehaviour
 {
     public bool ultReady;
     public float ultTime;
+    public float boltLifetime;
     
     public GameObject bolt;
-    Slider timer;
+    public GameObject boltSpawner;
+    Slider slider;
 
     void Start()
     {
-        slider = GetComponent<Slider>();
+        slider = GetComponent<Slider>(); //get slider
     }
 
     
@@ -25,13 +28,18 @@ public class Ultimate : MonoBehaviour
     {
         if(ultTime < 1)
         {
-            ultReady = false;
-            ultTime += Time.deltaTime;
+            ultReady = false; //ultimate cannot be used while charging
+            ultTime += Time.deltaTime; //start timer
+
+            slider.value = ultTime % slider.maxValue; //show ultimate charge visually with slider
         }
 
         if(ultTime >= 1)
         {
-            ultReady = true;
+            ultReady = true; //ultimate can now be used
+            ultTime = 1; //set time to 1 in case it goes over
+
+            slider.value = 1; //hold max slider value
         }
     }
 
@@ -39,9 +47,10 @@ public class Ultimate : MonoBehaviour
     {
         if(ultReady == true)
         {
-            Vector2 pos = transform.position;
-            Instantiate(bolt, pos, Quaternion.identity);
-            ultTime = 0;
+            Vector2 pos = boltSpawner.transform.position; //get spawner position
+            GameObject boltDespawn = Instantiate(bolt, pos, Quaternion.identity); //spawn bolt prefab
+            Destroy(boltDespawn, boltLifetime); //destroy bolt 
+            ultTime = 0; //reset timer
         }
     }
 }

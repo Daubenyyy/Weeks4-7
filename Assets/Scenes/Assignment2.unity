@@ -298,7 +298,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 149530353}
-  - component: {fileID: 149530352}
   m_Layer: 0
   m_Name: BoltSpawner
   m_TagString: Untagged
@@ -306,21 +305,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &149530352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149530351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86e6dd30049ec845a1c47ac56a93ab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ultReady: 0
-  ultTime: 0
-  bolt: {fileID: 5275738803444860377, guid: 5b9a7a32fc16ee44eb719c2a4cda581d, type: 3}
 --- !u!4 &149530353
 Transform:
   m_ObjectHideFlags: 0
@@ -1099,9 +1083,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221155572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656c8bfa6c3df024992b59bbe425a15c, type: 3}
+  m_Script: {fileID: 11500000, guid: f86e6dd30049ec845a1c47ac56a93ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ultReady: 0
+  ultTime: 0
+  boltLifetime: 2
+  bolt: {fileID: 5275738803444860377, guid: 5b9a7a32fc16ee44eb719c2a4cda581d, type: 3}
+  boltSpawner: {fileID: 149530351}
 --- !u!1 &1241249524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,7 +1618,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 149530352}
+      - m_Target: {fileID: 1221155575}
         m_TargetAssemblyTypeName: Ultimate, Assembly-CSharp
         m_MethodName: boltSpawn
         m_Mode: 1
