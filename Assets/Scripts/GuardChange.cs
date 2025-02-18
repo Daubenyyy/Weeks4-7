@@ -8,13 +8,12 @@ public class GuardChange : MonoBehaviour
 
     private Animator animator;
 
-    // Start is called before the first frame update
     void Start()
     {
+        //getting animator component
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         changeGuard();
@@ -22,6 +21,7 @@ public class GuardChange : MonoBehaviour
 
     void changeGuard()
     {
+        //checking guard number. set animation to true if guard number matches, otherwise be false
         if (guard == 0) animator.SetBool("HighGuard", true);
         else animator.SetBool("HighGuard", false);
 
@@ -32,7 +32,7 @@ public class GuardChange : MonoBehaviour
         else animator.SetBool("LowGuard", false);
     }
 
-    public void guardSlider(float g)
+    public void guardSlider(float g) //allows slider UI to change the guard #
     {
         guard = g;
     }

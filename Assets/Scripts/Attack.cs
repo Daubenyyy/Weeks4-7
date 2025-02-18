@@ -11,7 +11,7 @@ public class Attack : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>(); //get animator
     }
 
     
@@ -22,20 +22,20 @@ public class Attack : MonoBehaviour
 
     void attack()
     {
-        if (attacking == true)
+        if (attacking == true) //checks if attacking is true
         {
-            animator.SetBool("Attack", true);
-            attackTimer += Time.deltaTime;
+            animator.SetBool("Attack", true); //activate attack animation
+            attackTimer += Time.deltaTime; //start timer
         }
         if (attackTimer >= 0.083)
         {
-            attacking = false;
-            animator.SetBool("Attack", false);
-            attackTimer = 0;
+            attacking = false; //disable timer
+            animator.SetBool("Attack", false); //disable attack animation
+            attackTimer = 0; //reset timer
         }
     }
 
-    public void attackButton()
+    public void attackButton() //set attacking to true when button UI is pressed
     {
         attacking = true;
     }
